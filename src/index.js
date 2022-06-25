@@ -1,5 +1,15 @@
+const path = require("path");
 const express = require("express");
 const app = express();
+
+// realtive path
+// console.log(__dirname);
+
+// console.log(path.join(__dirname, "../public"));
+const staticPath = path.join(__dirname, "../public");
+
+// built-in middleware
+app.use(express.static(staticPath));
 
 app.get("/", (req, res) => {
   res.send("Hello from express");
