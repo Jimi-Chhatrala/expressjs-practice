@@ -3,7 +3,10 @@ const app = express();
 const port = 8000;
 
 app.get("/", (req, res) => {
-  res.send("Welcome to my home page.");
+  res.write("<h1>Welcome to my home page.</h1>");
+  res.write("<h1>Welcome to my home page.</h1>");
+  res.send();
+  // res.send("Welcome to my home page.");
 });
 
 app.get("/about", (req, res) => {
@@ -15,8 +18,58 @@ app.get("/contact", (req, res) => {
 });
 
 app.get("/temp", (req, res) => {
-  res.send("Welcome to my TEMP PAGE.");
+  res.json([
+    {
+      id: 1,
+      name: "Jimi",
+    },
+    {
+      id: 2,
+      name: "John",
+    },
+    {
+      id: 1,
+      name: "Jule",
+    },
+  ]);
+  // res.send("Welcome to my TEMP PAGE.");
 });
+
+app.get("/sendtemp", (req, res) => {
+  res.send([
+    {
+      id: 1,
+      name: null,
+    },
+    {
+      id: undefined,
+      name: "John",
+    },
+    {
+      id: 1,
+      name: undefined,
+    },
+  ]);
+  // res.send("Welcome to my TEMP PAGE.");
+});
+
+// app.get("/temp", (req, res) => {
+//   res.send([
+//     {
+//       id: 1,
+//       name: "Jimi",
+//     },
+//     {
+//       id: 2,
+//       name: "John",
+//     },
+//     {
+//       id: 1,
+//       name: "Jule",
+//     },
+//   ]);
+//   // res.send("Welcome to my TEMP PAGE.");
+// });
 
 app.listen(port, () => {
   console.log(`Listening to the port: ${port}`);
